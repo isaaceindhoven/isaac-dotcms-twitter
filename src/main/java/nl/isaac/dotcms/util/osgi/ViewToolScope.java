@@ -1,4 +1,4 @@
-package nl.isaac.dotcms.twitter.util;
+package nl.isaac.dotcms.util.osgi;
 
 /**
 * dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed 
@@ -9,14 +9,14 @@ package nl.isaac.dotcms.twitter.util;
 * @copyright Copyright (c) 2013 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
-import org.apache.velocity.tools.view.tools.ViewTool;
-
-public class TwitterDeployer implements ViewTool {
-
-	@Override
-	public void init(Object arg0) {
-		TwitterFieldFactory twitterFieldFactory = new TwitterFieldFactory();
-		twitterFieldFactory.createFieldsInHosts();
-	}
-
+/**
+ * The various scopes we support for viewtools
+ * @author Maarten
+ *
+ */
+public enum ViewToolScope {
+	APPLICATION,
+	REQUEST,
+	RESPONSE,
+	SESSION
 }

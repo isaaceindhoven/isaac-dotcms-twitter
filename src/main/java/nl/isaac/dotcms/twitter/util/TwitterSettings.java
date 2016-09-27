@@ -37,7 +37,7 @@ public class TwitterSettings {
 		//Extra check if all the fields still exist in the Host structure
 		TwitterFieldFactory twitterFieldFactory = new TwitterFieldFactory();
 		twitterFieldFactory.createFieldsInHosts();
-		
+				
 		Host hostWithTwitterSettings;
 		try {
 			hostWithTwitterSettings = WebAPILocator.getHostWebAPI().getCurrentHost(request);

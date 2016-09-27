@@ -58,5 +58,4 @@ public class TimelineServlet extends HttpServlet {
 			throw new RuntimeException(e.toString(), e);
 		}
 	}
-	
 }

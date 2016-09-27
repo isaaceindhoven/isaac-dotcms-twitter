@@ -1,5 +1,0 @@
-	<tool>
-		<key>twitterdeployerviewtool</key>
-		<scope>request</scope>
-		<class>nl.isaac.dotcms.twitter.util.TwitterDeployer</class>
-	</tool>

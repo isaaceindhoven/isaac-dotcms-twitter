@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 public class JSONResponseWriter {
-		
+
 	public static void writeObjectToResponse(String jsonPFunction, Object object, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=UTF-8");

@@ -25,6 +25,7 @@ import nl.isaac.dotcms.twitter.util.TwitterUtil;
 /**
  * This servlet will act like the old Twitter API 1.0 Search call.
  * @author Danny Gloudemans
+ *
  */
 public class SearchServlet extends HttpServlet {
 

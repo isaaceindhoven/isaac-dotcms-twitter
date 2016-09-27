@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.dotmarketing.cache.FieldsCache;
 import com.dotmarketing.cache.StructureCache;
+import com.dotmarketing.exception.DotHibernateException;
 import com.dotmarketing.portlets.structure.factories.FieldFactory;
 import com.dotmarketing.portlets.structure.factories.StructureFactory;
 import com.dotmarketing.portlets.structure.model.Field;
@@ -23,6 +24,7 @@ import com.dotmarketing.util.Logger;
  * In this class the plugin will check if the fields already exists in the Host structure
  * if not the class will create these fields in the Host structure
  * @author Danny Gloudemans
+ *
  */
 public class TwitterFieldFactory {
 	
@@ -52,7 +54,11 @@ public class TwitterFieldFactory {
 			// Update the cache, otherwise we can't save the values of the new fields
 			FieldsCache.removeFields( hostStructure ); 
 			StructureCache.removeStructure(hostStructure); 
-			StructureFactory.saveStructure(hostStructure); 
+			try {
+				StructureFactory.saveStructure(hostStructure);
+			} catch (DotHibernateException e) {
+				throw new RuntimeException(e.toString(), e);
+			} 
 			FieldsCache.addFields(hostStructure, hostStructure.getFieldsBySortOrder()); 
 
 			Logger.info(this, "*All the missing fields for the Twitter plugin are added to the Host structure*");
@@ -103,13 +109,17 @@ public class TwitterFieldFactory {
 	 * @param order
 	 */
 	private void addFieldToHostStructure(Structure hostStructure, String fieldName, Field.FieldType fieldtype, Field.DataType fieldDataType, int order) {
-		Field field = FieldFactory.getFieldByName("Host", fieldName);
-				
-		if(null == field.getVelocityVarName() || field.getVelocityVarName().isEmpty()) {
+		try {
+			Field field = FieldFactory.getFieldByName("Host", fieldName);
+					
+			if(null == field.getVelocityVarName() || field.getVelocityVarName().isEmpty()) {
 
-			Field newField = new Field(fieldName, fieldtype, fieldDataType, hostStructure, false, false, true, order, false, false, true);
-			Logger.info(this, "*Added the field '"+fieldName+"' to the Host structure");
-			FieldFactory.saveField(newField);
+				Field newField = new Field(fieldName, fieldtype, fieldDataType, hostStructure, false, false, true, order, false, false, true);
+				Logger.info(this, "*Added the field '"+fieldName+"' to the Host structure");
+				FieldFactory.saveField(newField);
+			}
+		} catch (DotHibernateException e) {
+			throw new RuntimeException(e.toString(), e);
 		}
 	}
 
