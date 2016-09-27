@@ -1,5 +1,14 @@
 package nl.isaac.dotcms.twitter.pojo;
 
+/**
+* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed 
+* under a Creative Commons Attribution 3.0 Unported License
+* - http://creativecommons.org/licenses/by/3.0/
+* - http://www.geekyplugins.com/
+* 
+* @copyright Copyright (c) 2013 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+*/
+
 import java.util.Date;
 
 import twitter4j.GeoLocation;
@@ -12,9 +21,8 @@ import twitter4j.URLEntity;
 import twitter4j.User;
 import twitter4j.UserMentionEntity;
 
-@SuppressWarnings("serial")
-public class CustomStatus  {
-
+public class CustomStatus {
+	
 	private Date createdAt;
     private long id;
     private String id_str;
@@ -76,7 +84,7 @@ public class CustomStatus  {
     	this.accessLevel = status.getAccessLevel();
     	this.user = status.getUser();
     }
-
+    
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -108,7 +116,7 @@ public class CustomStatus  {
 	public void setText(String text) {
 		this.text = text;
 	}
-
+	
 	public String getSource() {
 		return source;
 	}
