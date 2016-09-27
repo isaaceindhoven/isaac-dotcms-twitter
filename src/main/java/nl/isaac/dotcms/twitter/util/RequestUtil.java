@@ -17,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.velocity.tools.view.context.ViewContext;
 import org.apache.velocity.tools.view.tools.ViewTool;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 
+import com.dotcms.repackage.org.codehaus.jackson.JsonParseException;
+import com.dotcms.repackage.org.codehaus.jackson.map.JsonMappingException;
+import com.dotcms.repackage.org.codehaus.jackson.map.ObjectMapper;
 import com.dotmarketing.beans.Host;
 import com.dotmarketing.business.APILocator;
 import com.dotmarketing.business.Role;

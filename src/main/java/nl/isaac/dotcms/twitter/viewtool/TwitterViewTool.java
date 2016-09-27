@@ -10,10 +10,11 @@ import nl.isaac.dotcms.twitter.pojo.TwitterConfiguration;
 import nl.isaac.dotcms.twitter.util.TwitterSettings;
 import nl.isaac.dotcms.twitter.util.TwitterUtil;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.tools.view.context.ViewContext;
 import org.apache.velocity.tools.view.tools.ViewTool;
+
+import com.dotcms.repackage.org.apache.commons.lang.StringEscapeUtils;
 
 public class TwitterViewTool implements ViewTool {
 	
