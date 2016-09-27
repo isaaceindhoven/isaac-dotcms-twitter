@@ -5,16 +5,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import nl.isaac.dotcms.twitter.pojo.CustomStatus;
-import nl.isaac.dotcms.twitter.pojo.TwitterConfiguration;
-import nl.isaac.dotcms.twitter.util.TwitterSettings;
-import nl.isaac.dotcms.twitter.util.TwitterUtil;
-
 import org.apache.velocity.context.Context;
 import org.apache.velocity.tools.view.context.ViewContext;
 import org.apache.velocity.tools.view.tools.ViewTool;
 
 import com.dotcms.repackage.org.apache.commons.lang.StringEscapeUtils;
+
+import nl.isaac.dotcms.twitter.pojo.CustomStatus;
+import nl.isaac.dotcms.twitter.pojo.TwitterConfiguration;
+import nl.isaac.dotcms.twitter.util.TwitterFieldFactory;
+import nl.isaac.dotcms.twitter.util.TwitterSettings;
+import nl.isaac.dotcms.twitter.util.TwitterUtil;
 
 public class TwitterViewTool implements ViewTool {
 	
@@ -116,6 +117,36 @@ public class TwitterViewTool implements ViewTool {
         return text.replaceAll(url, "$1<a rel='nofollow' href='$2' target='_blank'>$2</a>")
             		.replaceAll(tweep, "<a rel='nofollow' href='http://twitter.com/$1' target='_blank'>$1</a>")
             		.replaceAll(hashtag, "<a rel='nofollow' href='https://twitter.com/hashtag/$2' target='_blank'>$1</a>");
+    }
+    
+    public boolean testCheckStructureFieldsExists() {
+    	TwitterFieldFactory fieldFactory = new TwitterFieldFactory();
+    	return fieldFactory.fieldsExistsInHost();
+    }
+    
+    public List<CustomStatus> testGetTimeline() {
+    	final String twitterUsername = "isaactestt";
+    	final String twitterConsumerKey = "QupxgK21VjP4zZznI22wtnsW8";
+    	final String twitterSecretConsumerKey = "WA9WJJfV2xIlOER6vUuMp3xjH9EM6J3IksSg50B3Rr5XtVBnB5";
+    	final String twitterAccessToken = "771251761973571584-BFj9MmAsts7dc92Eo35dDLRKFYS1XB3";
+    	final String twitterSecretAccessToken = "TAcitNcnXt8OxqAdV1tOCmxy8jE5mm9HCtP26biBnQESz";
+    	
+    	TwitterConfiguration twitterConfiguration = new TwitterConfiguration(twitterConsumerKey, twitterSecretConsumerKey, twitterAccessToken, twitterSecretAccessToken);
+    	
+		TwitterUtil twitterUtil = new TwitterUtil(twitterConfiguration.getTwitterConsumerKey(), twitterConfiguration.getTwitterSecretConsumerKey(), twitterConfiguration.getTwitterAccessToken(), twitterConfiguration.getTwitterSecretAccessToken());
+		
+		List<CustomStatus> statusses = new ArrayList<>();
+		try {
+			statusses = twitterUtil.getUserTimeline(twitterUsername, 1);
+		} catch (Exception e) {
+			return null;
+		}
+		
+		if (statusses.size() <= 0) {
+			return null;
+		}
+		
+		return statusses;
     }
 	
 }

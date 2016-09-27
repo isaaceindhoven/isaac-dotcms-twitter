@@ -11,8 +11,8 @@ package nl.isaac.dotcms.twitter.util;
 
 import java.util.List;
 
+import com.dotmarketing.cache.ContentTypeCacheImpl;
 import com.dotmarketing.cache.FieldsCache;
-import com.dotmarketing.cache.StructureCache;
 import com.dotmarketing.exception.DotHibernateException;
 import com.dotmarketing.portlets.structure.factories.FieldFactory;
 import com.dotmarketing.portlets.structure.factories.StructureFactory;
@@ -53,7 +53,8 @@ public class TwitterFieldFactory {
 			
 			// Update the cache, otherwise we can't save the values of the new fields
 			FieldsCache.removeFields( hostStructure ); 
-			StructureCache.removeStructure(hostStructure); 
+			ContentTypeCacheImpl contentTypeCache = new ContentTypeCacheImpl();
+			contentTypeCache.remove(hostStructure);
 			try {
 				StructureFactory.saveStructure(hostStructure);
 			} catch (DotHibernateException e) {
@@ -70,7 +71,7 @@ public class TwitterFieldFactory {
 	 * Check if all the required configuration fields already exists in the Host structure
 	 * @return boolean if all the configuration already exists in the host structure
 	 */
-	private boolean fieldsExistsInHost() {
+	public boolean fieldsExistsInHost() {
 		
 		Structure hostStructure = StructureFactory.getStructureByVelocityVarName("Host");
 		List<Field> fieldsInStructure = FieldFactory.getFieldsByStructure(hostStructure.getInode());
