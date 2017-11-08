@@ -1,12 +1,12 @@
 package nl.isaac.dotcms.twitter.util;
 
 /**
-* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed 
+* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed
 * under a Creative Commons Attribution 3.0 Unported License
 * - http://creativecommons.org/licenses/by/3.0/
 * - http://www.geekyplugins.com/
-* 
-* @copyright Copyright (c) 2013 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+*
+* @copyright Copyright (c) 2017 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
 import java.io.IOException;
@@ -35,21 +35,22 @@ import com.liferay.portal.model.User;
 
 public class RequestUtil implements ViewTool {
 	private HttpServletRequest request;
-	
+
 	/**
 	 * Only dotCMS should call this constructor, followed by an init()
 	 */
 	public RequestUtil() {};
-	
+
 	public RequestUtil(HttpServletRequest request) {
 		this.request = request;
 	}
-	
+
+	@Override
 	public void init(Object initData) {
 		ViewContext context = (ViewContext) initData;
-	    this.request = context.getRequest();		
+	    this.request = context.getRequest();
 	}
-	
+
 	private boolean isBackendLogin() {
 		try {
 			User backendUser = WebAPILocator.getUserWebAPI().getLoggedInUser(request);
@@ -59,8 +60,8 @@ public class RequestUtil implements ViewTool {
 			return false;
 		}
 	}
-	
-	
+
+
 	public boolean isAdministratorLoggedIn() {
 		try {
 			User backendUser = WebAPILocator.getUserWebAPI().getLoggedInUser(request);
@@ -71,35 +72,35 @@ public class RequestUtil implements ViewTool {
 			return false;
 		}
 	}
-	
+
 	public boolean isLiveMode() {
-		return !(isEditMode() || isPreviewMode()); 
+		return !(isEditMode() || isPreviewMode());
 	}
-	
+
 	public boolean isEditMode() {
 		Object EDIT_MODE_SESSION = request.getSession().getAttribute(com.dotmarketing.util.WebKeys.EDIT_MODE_SESSION);
 		if(EDIT_MODE_SESSION != null) {
 			return Boolean.valueOf(EDIT_MODE_SESSION.toString());
 		}
-		return false; 
+		return false;
 	}
-	
+
 	public boolean isPreviewMode() {
 		Object PREVIEW_MODE_SESSION = request.getSession().getAttribute(com.dotmarketing.util.WebKeys.PREVIEW_MODE_SESSION);
 		if(PREVIEW_MODE_SESSION != null) {
 			return Boolean.valueOf(PREVIEW_MODE_SESSION.toString());
 		}
-		return false; 
+		return false;
 	}
-	
+
 	public boolean isBackendViewOfPage() {
 		return isBackendLogin();
 	}
-	
+
 	public boolean isEditOrPreviewMode() {
 		return isEditMode() || isPreviewMode();
 	}
-	
+
 	public Host getCurrentHost() {
 		try {
 			return WebAPILocator.getHostWebAPI().getCurrentHost(request);
@@ -120,20 +121,20 @@ public class RequestUtil implements ViewTool {
 			Logger.warn(this, "Can't detect language, returning default language");
 			languageId = Long.valueOf(APILocator.getLanguageAPI().getDefaultLanguage().getId()).toString();
 		}
-		
+
 		return languageId;
 	}
-	
+
 	public static Integer getSelectedLanguage(HttpServletRequest request) {
 		return (Integer)request.getSession().getAttribute(WebKeys.LANGUAGE);
 	}
-	
+
 	public <T> T marshalRequestJsonToObject(Class<T> type) {
 		return marshalRequestJsonToObject(request, type);
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param request The request object
 	 * @param type The class type to marshal the JSON to
 	 * @return The marshaled object
@@ -150,7 +151,7 @@ public class RequestUtil implements ViewTool {
 			throw new RuntimeException("Unknown exception while parsing JSON from request", e);
 		}
 	}
-	
+
 	public Cookie getCookieByName(String name) {
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
@@ -158,11 +159,11 @@ public class RequestUtil implements ViewTool {
 				if (cookie.getName().equalsIgnoreCase(name)) {
 					return cookie;
 				}
-			}	
+			}
 		}
 		return null;
 	}
-	
+
 	public void setCookie(String name, String value, int maxAge, String domain, String path, HttpServletResponse response) {
 		Cookie cookie = new Cookie(name, value);
 		cookie.setMaxAge(maxAge);

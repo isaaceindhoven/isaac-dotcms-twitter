@@ -1,12 +1,12 @@
 package nl.isaac.dotcms.twitter.pojo;
 
 /**
-* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed 
+* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed
 * under a Creative Commons Attribution 3.0 Unported License
 * - http://creativecommons.org/licenses/by/3.0/
 * - http://www.geekyplugins.com/
-* 
-* @copyright Copyright (c) 2013 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+*
+* @copyright Copyright (c) 2017 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
 public class TwitterConfiguration {
@@ -15,7 +15,7 @@ public class TwitterConfiguration {
 	private String twitterSecretConsumerKey;
 	private String twitterAccessToken;
 	private String twitterSecretAccessToken;
-		
+
 	public TwitterConfiguration(String twitterConsumerKey,
 			String twitterSecretConsumerKey, String twitterAccessToken,
 			String twitterSecretAccessToken) {
@@ -25,7 +25,7 @@ public class TwitterConfiguration {
 		this.twitterAccessToken = twitterAccessToken;
 		this.twitterSecretAccessToken = twitterSecretAccessToken;
 	}
-	
+
 	public String getTwitterConsumerKey() {
 		return twitterConsumerKey;
 	}

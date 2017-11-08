@@ -1,12 +1,12 @@
 package nl.isaac.dotcms.twitter.pojo;
 
 /**
-* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed 
+* dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed
 * under a Creative Commons Attribution 3.0 Unported License
 * - http://creativecommons.org/licenses/by/3.0/
 * - http://www.geekyplugins.com/
-* 
-* @copyright Copyright (c) 2013 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+*
+* @copyright Copyright (c) 2017 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
 import java.util.Date;
@@ -22,7 +22,7 @@ import twitter4j.User;
 import twitter4j.UserMentionEntity;
 
 public class CustomStatus {
-	
+
 	private Date createdAt;
     private long id;
     private String id_str;
@@ -42,7 +42,7 @@ public class CustomStatus {
     private RateLimitStatus rateLimitStatus;
     private int accessLevel;
     private User user;
-    
+
     private long[] contributorsIDs;
 
     private Status retweetedStatus;
@@ -51,7 +51,7 @@ public class CustomStatus {
     private HashtagEntity[] hashtagEntities;
     private MediaEntity[] mediaEntities;
     private long currentUserRetweetId = -1L;
-    
+
     public CustomStatus(Status status) {
     	this.createdAt = status.getCreatedAt();
     	this.id = status.getId();
@@ -76,15 +76,15 @@ public class CustomStatus {
     	this.hashtagEntities = status.getHashtagEntities();
     	this.mediaEntities = status.getMediaEntities();
     	this.currentUserRetweetId = status.getCurrentUserRetweetId();
-    	
+
     	this.isRetweet = status.isRetweet();
     	this.isRetweetedByMe = status.isRetweetedByMe();
-    	
+
     	this.rateLimitStatus = status.getRateLimitStatus();
     	this.accessLevel = status.getAccessLevel();
     	this.user = status.getUser();
     }
-    
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -116,7 +116,7 @@ public class CustomStatus {
 	public void setText(String text) {
 		this.text = text;
 	}
-	
+
 	public String getSource() {
 		return source;
 	}

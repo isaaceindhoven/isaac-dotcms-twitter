@@ -1,12 +1,16 @@
 package nl.isaac.dotcms.twitter.osgi;
 
+import org.osgi.framework.BundleContext;
+
+import com.dotmarketing.util.Logger;
+
 /**
 * dotCMS Twitter plugin by ISAAC - The Full Service Internet Agency is licensed
 * under a Creative Commons Attribution 3.0 Unported License
 * - http://creativecommons.org/licenses/by/3.0/
 * - http://www.geekyplugins.com/
 *
-* @copyright Copyright (c) 2013 ISAAC Software Solutions B.V. (http://www.isaac.nl)
+* @copyright Copyright (c) 2017 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
 import nl.isaac.dotcms.twitter.servlet.SearchServlet;
@@ -16,9 +20,6 @@ import nl.isaac.dotcms.twitter.viewtool.TwitterViewTool;
 import nl.isaac.dotcms.util.osgi.ExtendedGenericBundleActivator;
 import nl.isaac.dotcms.util.osgi.ViewToolScope;
 
-import com.dotcms.repackage.org.osgi.framework.BundleContext;
-import com.dotmarketing.util.Logger;
-
 /**
  * OSGI activator, this class will be called when the plugin starts through the OSGI portlet
  * @author Danny Gloudemans
@@ -26,6 +27,7 @@ import com.dotmarketing.util.Logger;
  */
 public class TwitterActivator extends ExtendedGenericBundleActivator {
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		Logger.info(this, "Twitter: Activator.start()");
 
@@ -53,6 +55,7 @@ public class TwitterActivator extends ExtendedGenericBundleActivator {
 		}
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		Logger.info(this, "Twitter: Activator.stop()");
 		unregisterServices(context);
