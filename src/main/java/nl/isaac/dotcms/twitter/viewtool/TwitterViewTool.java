@@ -5,11 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.tools.view.context.ViewContext;
 import org.apache.velocity.tools.view.tools.ViewTool;
-
-import com.dotcms.repackage.org.apache.commons.lang.StringEscapeUtils;
 
 import nl.isaac.dotcms.twitter.pojo.CustomStatus;
 import nl.isaac.dotcms.twitter.pojo.TwitterConfiguration;
@@ -112,7 +111,7 @@ public class TwitterViewTool implements ViewTool {
 	 * @return String with added links with nofollow and target _blank attributes.
 	 */
     public String formatText(String text) {
-    	text = StringEscapeUtils.escapeHtml(text);
+    	text = StringEscapeUtils.escapeHtml3(text);
     	
         return text.replaceAll(url, "$1<a rel='nofollow' href='$2' target='_blank'>$2</a>")
             		.replaceAll(tweep, "<a rel='nofollow' href='http://twitter.com/$1' target='_blank'>$1</a>")

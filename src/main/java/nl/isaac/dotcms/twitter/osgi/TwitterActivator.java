@@ -28,14 +28,11 @@ import nl.isaac.dotcms.util.osgi.ViewToolScope;
 public class TwitterActivator extends ExtendedGenericBundleActivator {
 
 	@Override
-	public void start(BundleContext context) throws Exception {
+	public void init(BundleContext context) {
 		Logger.info(this, "Twitter: Activator.start()");
 
 		try {
 			TwitterFieldFactory twitterFieldFactory = new TwitterFieldFactory();
-
-			// Initialize the required OSGI services
-			initializeServices(context);
 
 			// ViewTool
 			addViewTool(context, TwitterViewTool.class, "isaacTwitterTool", ViewToolScope.REQUEST);
@@ -51,13 +48,12 @@ public class TwitterActivator extends ExtendedGenericBundleActivator {
 			twitterFieldFactory.createFieldsInHosts();
 		} catch (Throwable t) {
 			Logger.error(this, "Error while initializing Twitter plugin. Calling stop() to unregister plugin", t);
-			stop(context);
+			try {
+				stop(context);
+			} catch (Throwable t2) {
+				Logger.warn(this, "Unable to stop twitter plugin", t2);
+			}
 		}
 	}
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		Logger.info(this, "Twitter: Activator.stop()");
-		unregisterServices(context);
-	}
 }

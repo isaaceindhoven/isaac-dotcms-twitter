@@ -9,12 +9,11 @@ package nl.isaac.dotcms.twitter.util;
 * @copyright Copyright (c) 2017 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
-
-import com.dotcms.repackage.com.google.gson.Gson;
 
 public class JSONResponseWriter {
 

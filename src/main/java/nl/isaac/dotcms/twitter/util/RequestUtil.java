@@ -9,6 +9,7 @@ package nl.isaac.dotcms.twitter.util;
 * @copyright Copyright (c) 2017 ISAAC Software Solutions B.V. (http://www.isaac.nl)
 */
 
+import com.dotmarketing.util.PageMode;
 import java.io.IOException;
 
 import javax.servlet.http.Cookie;
@@ -78,19 +79,11 @@ public class RequestUtil implements ViewTool {
 	}
 
 	public boolean isEditMode() {
-		Object EDIT_MODE_SESSION = request.getSession().getAttribute(com.dotmarketing.util.WebKeys.EDIT_MODE_SESSION);
-		if(EDIT_MODE_SESSION != null) {
-			return Boolean.valueOf(EDIT_MODE_SESSION.toString());
-		}
-		return false;
+		return PageMode.get(request) == PageMode.EDIT_MODE;
 	}
 
 	public boolean isPreviewMode() {
-		Object PREVIEW_MODE_SESSION = request.getSession().getAttribute(com.dotmarketing.util.WebKeys.PREVIEW_MODE_SESSION);
-		if(PREVIEW_MODE_SESSION != null) {
-			return Boolean.valueOf(PREVIEW_MODE_SESSION.toString());
-		}
-		return false;
+		return PageMode.get(request) == PageMode.PREVIEW_MODE;
 	}
 
 	public boolean isBackendViewOfPage() {

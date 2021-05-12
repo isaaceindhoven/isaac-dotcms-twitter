@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.isaac.dotcms.plugin.twitter</groupId>
 	<artifactId>isaac-dotcms-twitter</artifactId>
-	<version>4.2.1-2</version>
+	<version>5.3.8.4-1</version>
 	<packaging>bundle</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,7 +71,7 @@
 		<dependency>
 			<groupId>com.dotcms</groupId>
 			<artifactId>dotcms</artifactId>
-			<version>4.2.1</version>
+			<version>5.3.8.4</version>
 			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
@@ -81,93 +81,25 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.commons-io</artifactId>
-			<version>2.0.1_2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.commons-lang</artifactId>
-			<version>2.4_2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.felix</artifactId>
-			<version>4.2.1_1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.portlet</artifactId>
-			<version>1.0_1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.org.apache.felix.http.bundle</artifactId>
-			<version>2.2.0_1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.urlrewritefilter</artifactId>
-			<version>4.0.3_2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.tika-app</artifactId>
-			<version>1.3_3</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.jackson-mapper-asl</artifactId>
-			<version>1.9.2_1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.jackson-core-asl</artifactId>
-			<version>1.9.2_1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.log4j-api</artifactId>
-			<version>2.3_1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dotcms.lib</groupId>
-			<artifactId>dot.log4j-core</artifactId>
-			<version>2.3_2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>3.1.0.RELEASE</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<version>1.8.6</version>
 			<artifactId>quartz</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
 		</dependency>
 	</dependencies>
 </project>
