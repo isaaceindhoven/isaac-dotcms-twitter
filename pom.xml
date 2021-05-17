@@ -21,7 +21,7 @@
 		<repository>
 			<id>dotcms</id>
 			<name>dotcms Maven Repository</name>
-			<url>http://repo.dotcms.com/artifactory/repo</url>
+			<url>https://repo.dotcms.com/artifactory/libs-release-local/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
